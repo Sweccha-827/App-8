@@ -133,13 +133,40 @@
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
  } // end of the window.onload function
+  
+  
+    function init() {
+      var touchzone = document.getElementById("mycanvas");
+      touchzone.addEventListener("touchstart", draw, false);
+    }
+ 
+    function draw() {
+      var canvas = document.getElementById('mycanvas');
+ 
+      if(canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        ctx.fillRect (event.touches[0].pageX, event.touches[0].pageY, 5, 5);
+      }
+    } 
+  
  </script>
  </head>
 
  <body>
   <div data-role="page">
     <div data-role="header">
-    <h1>Primary Colors</h1></div><!-- /header -->
+    <h1>Color Diagnostics</h1></div><!-- /header -->
+    <div data-role="content">	
+      <h2>Push button to take picture.</h2>
+      <div>
+        Press orange button to create or choose image file:
+        <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
+      </div>
+      <div id="messageDisplayArea"></div>
+     
+  <div data-role="page">
+    <div data-role="header">
+    <h1>Color Diagnostics</h1></div><!-- /header -->
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
       <div>
@@ -154,19 +181,10 @@
       var context = canvas.getContext("2d"); // This identifies canvas 1 and defines the 2d context
       context.font = '20pt Calibri'; // This defines the font and size of the text for the canvas
       context.fillStyle = "purple"; // This defines the color of the font for the canvas
-      context.fillText("Original image will go here", 10, 20); // This defines what the text should say and its size
+      context.fillText("Image will go here", 10, 20); // This defines what the text should say and its size
   </script> <!--This is the end of the canvas script for canvas 1-->
 
-  <canvas id="myCanvas2" width=600 height=500 style="border:3px solid #d3d3d3;"></canvas> <!--This identifies canvas 2 and defines the dimensions and the border-->
-  <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas2" */
-      var canvas2 = document.getElementById('myCanvas2'); // This identifies canvas 2
-      var context2 = canvas2.getContext("2d"); // This identifies canvas 2 and defines the 2d context
-      context2.font = '20pt Calibri'; // This defines the font and size of the text for the canvas
-      context2.fillStyle = "purple"; // This defines the color of the font for the canvas
-      context2.fillText("New image will go here", 10, 20); // This defines what the text should say and its size
-  </script> <!--This is the end of the script for canvas 2-->
-
-
+ 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed"> <!--This creates a footer for the bottom of the page-->
       <p>DIY Diagnostics</p> <!--This defines the text for the footer-->
